@@ -8,3 +8,4 @@ const axiosCreate = axios.create({
 });
 
 const register = axiosCreate.post('signup')
+const login = axiosCreate.post('signin')

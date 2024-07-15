@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosCreate = axios.create({
-	baseURL: "http://localhost:3000/product/",
+	baseURL: `${process.env.NEXT_API_URL}product`,
 	headers: {
 		"Content-Type": "application/json",
 	},

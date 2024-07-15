@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosCreate = axios.create({
-	baseURL: "http://localhost:3000/user/",
+	baseURL: `${process.env.NEXT_API_URL}user/`,
 	headers: {
 		"Content-Type": "application/json",
 	},

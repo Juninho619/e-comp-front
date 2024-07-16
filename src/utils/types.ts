@@ -3,3 +3,8 @@ export type authProps = {
     email: string
     password: string
 }
+
+export type loginProps = {
+    email: string
+    password: string
+}

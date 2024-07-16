@@ -2,7 +2,7 @@ import { authProps, loginProps} from "@/utils/types";
 import axios from "axios";
 
 export async function signUp(authProps: authProps) {
-  const url = `${process.env.NEXT_PUBLIC_URL}auth/signup`;
+  const url = `${process.env.NEXT_PUBLIC_API_URL}auth/signup`;
 
   const axiosConfig = {
     headers: {

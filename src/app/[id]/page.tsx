@@ -1,8 +1,13 @@
+import Header from '@/components/Header/Header'
+import ProductDetail from '@/components/ProductDetail'
 import React from 'react'
 
-const page = () => {
+const page = ({ params }: { params: { id: string } }) => {
   return (
-    <div>page</div>
+    <div>
+      <Header/>
+      <ProductDetail id={params.id} />
+    </div>
   )
 }
 

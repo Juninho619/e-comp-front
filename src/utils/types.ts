@@ -10,6 +10,7 @@ export type loginProps = {
 }
 
 export type productProps = {
+    id: string
     product_brand: string
     product_model: string
     price: number

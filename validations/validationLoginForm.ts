@@ -1,7 +1,7 @@
 import * as yup from "yup";
 
 export const schema = yup.object({
-    email: yup.string().required('Need email to register').email("Invalid email format")
+    email: yup.string().required('Need email to login').email("Invalid email format")
     .matches(
       /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
       "Please enter a valid email address"

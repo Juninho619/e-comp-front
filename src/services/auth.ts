@@ -32,7 +32,7 @@ export async function signUp(authProps: authProps) {
 export async function signIn(loginProps: loginProps) {
   console.log("hey");
 
-  const url = `${process.env.NEXT_PUBLIC_URL}auth/signup`;
+  const url = `${process.env.NEXT_PUBLIC_API_URL}auth/signin`;
 
   const axiosConfig = {
     headers: {

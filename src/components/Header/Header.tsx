@@ -1,4 +1,5 @@
 import React from 'react'
+import { FaShoppingCart } from "react-icons/fa";
 
 const Header = () => {
   return (
@@ -7,6 +8,9 @@ const Header = () => {
         <div className='text-center flex-row h-40'>
         <a>Products</a> -
         <a> My purchases</a>
+        </div>
+        <div className='absolute top-0 right-0'>
+        <FaShoppingCart size={70}/>
         </div>
     </div>
   )

@@ -17,3 +17,13 @@ export type productProps = {
     stock: number
     category: string
 }
+
+export type purchaseProps = {
+    id: string,
+    product: [],
+    product_id: string,
+    amount: number,
+    quantity: number,
+    user: [],
+    user_id: string
+}

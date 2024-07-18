@@ -11,6 +11,7 @@ const ProductCard = () => {
     useEffect(() => {
 		getAllProducts()
       .then((res) => {
+        console.log(res.data);
         setProductList(res.data);
       })
       .catch((e) => {
@@ -30,7 +31,7 @@ const ProductCard = () => {
                         <p>{element.category}</p>
                         <p>{element.price}€</p>
                         <p>stock: {element.stock}</p>
-                        <Link href={element.id}>
+                        <Link href={`product-details/${element.id}`}>
                         <button className='bg-indigo-600 px-4 rounded-md'>See more</button>
                         </Link>
                     </div>

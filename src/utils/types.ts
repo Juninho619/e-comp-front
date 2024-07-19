@@ -27,3 +27,13 @@ export type purchaseProps = {
     user: [],
     user_id: string
 }
+
+export interface cartType {
+    cart: number;
+    num: number;
+    incNum: () => void;
+    decNum: () => void;
+    addToCart: () => void;
+    emptyCart: () => void;
+    removeFromCart: () => void;
+  }

@@ -1,6 +1,8 @@
+import { cartType } from '@/utils/types'
 import { create } from 'zustand'
 
-const useStore = create((set) => ({
+
+const useStore = create<cartType>((set) => ({
     cart: 0,
     num: 0,
     incNum: () => set((state) => ({ num: state.num + 1 })),
@@ -8,5 +10,5 @@ const useStore = create((set) => ({
     addToCart: () => set((state) => ({ cart: state.cart + state.num })),
     emptyCart: () => set({ cart: 0 }),
     removeFromCart: () => set((state) => ({cart: state.cart - state.num})),
-    updateBears: (newProduct) => set({ cart: newProduct }),
 }))
+

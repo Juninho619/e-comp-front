@@ -2,38 +2,71 @@
 import { getProductById } from '@/services/getProducts';
 import { productProps } from '@/utils/types'
 import React, { useEffect, useState } from 'react'
+import { FaMinus, FaPlus } from 'react-icons/fa';
+import { useStore } from 'zustand';
 
 const ProductDetail = ({id}: {id: string}) => {
-    const [productDetail, setProductDetail] = useState<productProps[]>()
-    
-    useEffect(() => {
-		const getData = async () => {
-			const response = await getProductById;
-			setProductDetail(response.data);
-		};
-		getData();
-	}, []);
-    
-  return (
-    <div className='bg-white h-full'>
-        {productDetail && productDetail.map((element: productProps) =>{
-            return(
-                <div className='border-2 border-gray-600 w-full rounded-md px-8' key={element.id}>
-                    <p>{element.product_brand}</p>
-                    <p>{element.category}</p>
-                    <p>{element.product_model}</p>
-                    <p>{element.price}€</p>
-                    <p>stock: {element.stock}</p>
-                    <button className='bg-emerald-600 px-4 rounded-md'>Add to cart</button>
-                </div>
-                )
-            }
-        ) 
+    const [productDetail, setProductDetail] = useState<productProps[]>([])
+    const [productBrand, setProductBrand] = useState('')
+    const [productModel, setProductModel] = useState('')
+    const [category, setCategory] = useState('')
+    const [quantity, setQuantity] = useState(0)
+    const [stock, setStock] = useState(0)
+
+    const [quantitytoBuy, setQuantityToBuy] = useState(1)
+
+    function increaseQuantitytoBuy(){
+        setQuantityToBuy(quantitytoBuy + 1)
     }
- </div>
-)
+
+    function decreaseQuantityToBuy(){
+        if(quantitytoBuy > 1)
+        setQuantityToBuy(quantitytoBuy - 1)
+    }
+
+    function resetQuantityToBuy(){
+        setQuantityToBuy(1)
+    }
+
+    
+
+    useEffect(() => {
+        getProductById(id)
+        .then((res) => {
+        console.log(res.data);
+        const products = res.data
+        console.log(res.data.product);
+        setProductBrand(res.data.product_brand)
+        setProductModel(res.data.product_model)
+        setQuantity(res.data.quantity)
+        setStock(res.data.stock)
+        setCategory(res.data.category)
+        setProductDetail(products)
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }, []);
+ return (
+    <div className='bg-white h-96'>
+        <div className='pl-6 text-5xl'>
+        <h2>{productBrand}</h2>
+        <p>{productModel}</p>
+        <p>{category}</p>
+        <p>{quantity}</p>
+        <p>stock: {stock}</p>
+        <div className='flex content-center'>
+        <FaPlus onClick={increaseQuantitytoBuy}/>
+        <p onClick={resetQuantityToBuy}>Reset</p>
+        <FaMinus onClick={decreaseQuantityToBuy}/>
+        </div>
+        <div className='flex content-center'>
+        <p className='px-24'>{quantitytoBuy}</p>
+        </div>
+        <button className='bg-emerald-600 px-4 rounded-md'>Add to cart</button>
+        </div>
+    </div>
+ )
 }
-    
-    
 
 export default ProductDetail

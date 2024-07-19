@@ -9,6 +9,7 @@ export async function getAllProducts(){
 		  "content-type": "application/json",
 		  "Access-Control-Allow-Origin": "*",
 		  "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+		  
 		},
 	  };
 	  return axios
@@ -32,6 +33,7 @@ export async function getProductById(id: string){
 		  "content-type": "application/json",
 		  "Access-Control-Allow-Origin": "*",
 		  "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+		  Authorization: `Bearer ${localStorage.getItem("token")}`,
 		},
 	  };
 	  return axios

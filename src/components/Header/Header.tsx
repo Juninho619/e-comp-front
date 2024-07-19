@@ -1,14 +1,12 @@
-
-import { cartType } from '@/utils/types';
 import React from 'react'
 import { FaShoppingCart } from "react-icons/fa";
+import { cartType } from '@/utils/types';
 import { useStore } from 'zustand';
 
 const Header = () => {
 
   function cartCounter(){
     const cart = useStore<cartType>((state) => state.cart)
-    return <p>{cart}</p>
   }
   
 return (

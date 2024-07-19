@@ -4,11 +4,7 @@ import { cartType } from '@/utils/types';
 import { useStore } from 'zustand';
 
 const Header = () => {
-
-  function cartCounter(){
-    const cart = useStore<cartType>((state) => state.cart)
-  }
-  
+    
 return (
     <div className='bg-black text-white'>
         <h1 className='text-2xl ps-8 pt-6'>E-comp</h1>

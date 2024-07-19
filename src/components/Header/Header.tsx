@@ -2,6 +2,7 @@ import React from 'react'
 import { FaShoppingCart } from "react-icons/fa";
 
 const Header = () => {
+  
   return (
     <div  className='bg-black text-white'>
         <h1 className='text-2xl ps-8 pt-6'>E-comp</h1>

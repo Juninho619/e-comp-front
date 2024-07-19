@@ -2,6 +2,8 @@
 import { getProductById } from '@/services/getProducts';
 import { productProps } from '@/utils/types'
 import React, { useEffect, useState } from 'react'
+import { FaMinus, FaPlus } from 'react-icons/fa';
+import { useStore } from 'zustand';
 
 const ProductDetail = ({id}: {id: string}) => {
     const [productDetail, setProductDetail] = useState<productProps[]>([])
@@ -10,6 +12,23 @@ const ProductDetail = ({id}: {id: string}) => {
     const [category, setCategory] = useState('')
     const [quantity, setQuantity] = useState(0)
     const [stock, setStock] = useState(0)
+
+    const [quantitytoBuy, setQuantityToBuy] = useState(1)
+
+    function increaseQuantitytoBuy(){
+        setQuantityToBuy(quantitytoBuy + 1)
+    }
+
+    function decreaseQuantityToBuy(){
+        if(quantitytoBuy > 1)
+        setQuantityToBuy(quantitytoBuy - 1)
+    }
+
+    function resetQuantityToBuy(){
+        setQuantityToBuy(1)
+    }
+
+    
 
     useEffect(() => {
         getProductById(id)
@@ -30,12 +49,20 @@ const ProductDetail = ({id}: {id: string}) => {
     }, []);
  return (
     <div className='bg-white h-96'>
-        <div className='pl-6'>
-        <p>{productBrand}</p>
+        <div className='pl-6 text-5xl'>
+        <h2>{productBrand}</h2>
         <p>{productModel}</p>
         <p>{category}</p>
         <p>{quantity}</p>
         <p>stock: {stock}</p>
+        <div className='flex content-center'>
+        <FaPlus onClick={increaseQuantitytoBuy}/>
+        <p onClick={resetQuantityToBuy}>Reset</p>
+        <FaMinus onClick={decreaseQuantityToBuy}/>
+        </div>
+        <div className='flex content-center'>
+        <p className='px-24'>{quantitytoBuy}</p>
+        </div>
         <button className='bg-emerald-600 px-4 rounded-md'>Add to cart</button>
         </div>
     </div>

@@ -1,7 +1,5 @@
 import React from 'react'
 import { FaShoppingCart } from "react-icons/fa";
-import { cartType } from '@/utils/types';
-import { useStore } from 'zustand';
 
 const Header = () => {
     

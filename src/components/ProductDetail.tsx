@@ -3,7 +3,6 @@ import { getProductById } from '@/services/getProducts';
 import { productProps } from '@/utils/types'
 import React, { useEffect, useState } from 'react'
 import { FaMinus, FaPlus } from 'react-icons/fa';
-import { useStore } from 'zustand';
 
 const ProductDetail = ({id}: {id: string}) => {
     const [productDetail, setProductDetail] = useState<productProps[]>([])
@@ -16,6 +15,7 @@ const ProductDetail = ({id}: {id: string}) => {
     const [quantitytoBuy, setQuantityToBuy] = useState(1)
 
     function increaseQuantitytoBuy(){
+        if(quantitytoBuy < stock)
         setQuantityToBuy(quantitytoBuy + 1)
     }
 
@@ -27,8 +27,6 @@ const ProductDetail = ({id}: {id: string}) => {
     function resetQuantityToBuy(){
         setQuantityToBuy(1)
     }
-
-    
 
     useEffect(() => {
         getProductById(id)

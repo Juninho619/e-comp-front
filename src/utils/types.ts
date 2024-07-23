@@ -29,11 +29,11 @@ export type purchaseProps = {
 }
 
 export interface cartType {
-    cart: number;
+    cart: productProps[];
     num: number;
     incNum: () => void;
     decNum: () => void;
-    addToCart: () => void;
+    addToCart: (product: productProps) => void;
     emptyCart: () => void;
-    removeFromCart: () => void;
+    // removeFromCart: () => void;
   }
